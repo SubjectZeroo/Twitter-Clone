@@ -40,4 +40,15 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    // public function getAvatarAttribute()
+    // {
+    //     return "https://picsum.photos/id/ . $this->id/50";
+    // }
+
+    public function timeline()
+    {
+        // dd($this->user_id);
+        return Tweet::where('user_id', $this->id)->latest()->get();
+    }
 }

@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\User;
+use App\Models\Tweet;
 
 use Illuminate\Http\Request;
 
@@ -23,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        // $tweets = Tweet::latest()->get();
+        return view('home', [
+            'tweets' => auth()->user()->timeline()
+        ]);
     }
 }
