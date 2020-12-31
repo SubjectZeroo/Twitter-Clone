@@ -5,7 +5,7 @@
         name="body"
         class="w-full"
         placeholder="What's up doc"
-        required
+
         ></textarea>
 
         <hr class="my-4">
@@ -24,5 +24,9 @@
         </button>
         </footer>
     </form>
+
+    @error('body')
+        <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
+    @enderror
 
 </div>
