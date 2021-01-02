@@ -17,7 +17,9 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
+        'username',
         'name',
+        'avatar',
         'email',
         'password',
     ];
@@ -46,6 +48,12 @@ class User extends Authenticatable
     //     return "https://picsum.photos/id/ . $this->id/50";
     // }
 
+        public function getAvatarAttribute($value)
+        {
+            return asset('storage/' . $value);
+        }
+
+
     public function timeline()
     {
         // dd($this->user_id);
@@ -72,7 +80,7 @@ class User extends Authenticatable
 
     public function path($append = '')
     {
-        $path = route('profile' , $this->name);
+        $path = route('profile' , $this->username);
 
         return $append ? "{$path}/{$append}" : $path;
     }
