@@ -26,10 +26,10 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/tweets', '\App\Http\Controllers\TweetController@store');
 
-
+    Route::post('/profiles/{user:name}/follow', '\App\Http\Controllers\FollowsController@store');
 });
 
-Route::get('/profiles/{user}', '\App\Http\Controllers\ProfilesController@show')->name('profile');
+Route::get('/profiles/{user:name}', '\App\Http\Controllers\ProfilesController@show')->name('profile');
 
 Auth::routes();
 
