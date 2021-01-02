@@ -1,6 +1,8 @@
 <?php
+// DB::listen(function($query) { var_dump($query->sql, $query->bindings);});
 
 use Illuminate\Support\Facades\Route;
+use PHPUnit\TextUI\XmlConfiguration\Group;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,9 +19,19 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/tweets', '\App\Http\Controllers\HomeController\TweetController@store');
+
+Route::middleware('auth')->group(function () {
+
+    Route::get('/tweets', '\App\Http\Controllers\TweetController@index')->name('home');
+
+    Route::post('/tweets', '\App\Http\Controllers\TweetController@store');
+
+
+});
+
+Route::get('/profiles/{user}', '\App\Http\Controllers\ProfilesController@show')->name('profile');
 
 Auth::routes();
 
-Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [\App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
