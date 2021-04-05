@@ -7,13 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class Tweet extends Model
 {
-    use HasFactory;
-protected $guarded= [];
+    use HasFactory, Likable;
+    protected $guarded= [];
+
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
-
-
 
 }

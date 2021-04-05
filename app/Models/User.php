@@ -49,11 +49,22 @@ class User extends Authenticatable
     // }
 
         public function getAvatarAttribute($value)
-        {
-            return asset('storage/' . $value);
+         {
+        //     return asset('storage/' . $value ?: '/images/default-avatar.png');
+            if(isset($value)) {
+
+                return asset('storage/' . $value );
+
+            } else {
+
+                return asset('storage/avatars/default-avatar.png');
+            }
         }
 
-
+public function setPasswordAttribute($value)
+{
+    $this->attributes['password'] = bcrypt($value);
+}
     public function timeline()
     {
         // dd($this->user_id);
@@ -69,8 +80,9 @@ class User extends Authenticatable
         $ids = $this->follows()->pluck('id');
         $ids->push($this->id);
         return Tweet::whereIn('user_id',$ids)
+                    ->withLikes()
                     ->latest()
-                    ->get();
+                    ->paginate(50);
     }
 
     public function tweets()
@@ -83,6 +95,11 @@ class User extends Authenticatable
         $path = route('profile' , $this->username);
 
         return $append ? "{$path}/{$append}" : $path;
+    }
+
+    public function likes()
+    {
+        return $this->hasMany(Like::class);
     }
 
     // public function getRouteKeyName()

@@ -39,8 +39,7 @@
                     type="file"
                     name="avatar"
                     id="avatar"
-                    value="{{  $user->username }}"
-                    required>
+                    value="{{  $user->username }}">
                     <img src="{{$user->avatar}}" alt="Your Avatar" width="40px">
             </div>
             @error('avatar')
