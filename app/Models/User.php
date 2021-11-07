@@ -48,23 +48,28 @@ class User extends Authenticatable
     //     return "https://picsum.photos/id/ . $this->id/50";
     // }
 
-        public function getAvatarAttribute($value)
-         {
-        //     return asset('storage/' . $value ?: '/images/default-avatar.png');
-            if(isset($value)) {
+    // public function getAvatarAttribute($value)
+    // {
+    //     return asset('storage/' . $value ?: '/images/default-avatar.png');
+    // }
 
-                return asset('storage/' . $value );
 
-            } else {
+    public function getAvatarAttribute($value)
+    {
+        //   return asset('storage/' . $value ?: '/images/default-avatar.png');
+        if (isset($value)) {
 
-                return asset('storage/avatars/default-avatar.png');
-            }
+            return asset('storage/' . $value);
+        } else {
+
+            return asset('/images/default-avatar.png');
         }
+    }
 
-public function setPasswordAttribute($value)
-{
-    $this->attributes['password'] = bcrypt($value);
-}
+    public function setPasswordAttribute($value)
+    {
+        $this->attributes['password'] = bcrypt($value);
+    }
     public function timeline()
     {
         // dd($this->user_id);
@@ -79,10 +84,10 @@ public function setPasswordAttribute($value)
 
         $ids = $this->follows()->pluck('id');
         $ids->push($this->id);
-        return Tweet::whereIn('user_id',$ids)
-                    ->withLikes()
-                    ->latest()
-                    ->paginate(50);
+        return Tweet::whereIn('user_id', $ids)
+            ->withLikes()
+            ->latest()
+            ->paginate(50);
     }
 
     public function tweets()
@@ -92,7 +97,7 @@ public function setPasswordAttribute($value)
 
     public function path($append = '')
     {
-        $path = route('profile' , $this->username);
+        $path = route('profile', $this->username);
 
         return $append ? "{$path}/{$append}" : $path;
     }

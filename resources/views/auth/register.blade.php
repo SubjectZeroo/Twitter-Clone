@@ -1,4 +1,6 @@
-<x-master>
+@extends('layouts.app')
+
+@section('content')
     <main class="sm:container sm:mx-auto sm:max-w-lg sm:mt-10">
         <div class="flex">
             <div class="w-full">
@@ -16,13 +18,14 @@
                                 Username
                             </label>
 
-                            <input id="username" type="text" class="form-input w-full @error('username')  border-red-500 @enderror"
-                                name="username" value="{{ old('username') }}" required autocomplete="username" autofocus>
+                            <input id="username" type="text"
+                                class="form-input w-full @error('username')  border-red-500 @enderror" name="username"
+                                value="{{ old('username') }}" required autocomplete="username" autofocus>
 
                             @error('username')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
                             @enderror
                         </div>
 
@@ -35,9 +38,9 @@
                                 name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
 
                             @error('name')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
                             @enderror
                         </div>
 
@@ -51,9 +54,9 @@
                                 value="{{ old('email') }}" required autocomplete="email">
 
                             @error('email')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
                             @enderror
                         </div>
 
@@ -67,9 +70,9 @@
                                 required autocomplete="new-password">
 
                             @error('password')
-                            <p class="text-red-500 text-xs italic mt-4">
-                                {{ $message }}
-                            </p>
+                                <p class="text-red-500 text-xs italic mt-4">
+                                    {{ $message }}
+                                </p>
                             @enderror
                         </div>
 
@@ -90,7 +93,8 @@
 
                             <p class="w-full text-xs text-center text-gray-700 my-6 sm:text-sm sm:my-8">
                                 {{ __('Already have an account?') }}
-                                <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline" href="{{ route('login') }}">
+                                <a class="text-blue-500 hover:text-blue-700 no-underline hover:underline"
+                                    href="{{ route('login') }}">
                                     {{ __('Login') }}
                                 </a>
                             </p>
@@ -101,4 +105,4 @@
             </div>
         </div>
     </main>
-</x-master>
+@endsection
