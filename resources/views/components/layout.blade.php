@@ -21,9 +21,12 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
-<body class="bg-gray-100 h-screen antialiased leading-none font-sans">
-    <div id="app">
-        @if (auth()->check())
+<body>
+    <div id="app" class="flex container h-screen w-full">
+        @include('_sidebar-links')
+        {{ $slot }}
+        @include('_friends-list')
+        {{-- @if (auth()->check())
             <x-navbar></x-navbar>
             <section class="px-8">
                 <main class="container mx-auto">
@@ -31,7 +34,7 @@
                         <div class="lg:w-32">
                             @include('_sidebar-links')
                         </div>
-                        <div class="lg:flex-1 lg:mx-10" style="max-width: 700px">
+                        <div class="lg:flex-1 lg:mx-11" style="max-width: 700px">
                             {{ $slot }}
                         </div>
                         <div class="lg:w-1/6">
@@ -40,7 +43,7 @@
                     </div>
                 </main>
             </section>
-        @endif
+        @endif --}}
     </div>
 </body>
 
