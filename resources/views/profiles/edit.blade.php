@@ -1,6 +1,9 @@
 <x-layout>
     <div class="px-5 py-3 w-full md:w-1/2 h-full">
         <h2>Edit Your Profile</h2>
+        <div class="px-5 py-3 flex items-center justify-center">
+            <img src="{{ $user->avatar }}" alt="Your Avatar" width="90px">
+        </div>
         <form method="POST" action="{{ $user->path() }}" enctype="multipart/form-data">
             @csrf
             @method('PATCH')
@@ -24,13 +27,23 @@
                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
                 @enderror
             </div>
+            <div class="mb-6">
+                <label class="block mb-2 uppercase font-bold text-xs text-gray-700"
+                    for="description">Description</label>
+                <textarea name="description" id="description"
+                    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline">{{ $user->description }}</textarea>
+
+                @error('username')
+                    <p class="text-red-500 text-xs mt-2">{{ $message }}</p>
+                @enderror
+            </div>
             <div class="mb-6 ">
                 <label class="block mb-2 uppercase font-bold text-xs text-gray-700" for="avatar">Avatar</label>
                 <div class="flex">
                     <input
                         class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                         type="file" name="avatar" id="avatar" value="{{ $user->username }}">
-                    <img src="{{ $user->avatar }}" alt="Your Avatar" width="40px">
+
                 </div>
                 @error('avatar')
                     <p class="text-red-500 text-xs mt-2">{{ $message }}</p>

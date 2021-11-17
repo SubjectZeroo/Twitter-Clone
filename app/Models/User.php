@@ -6,6 +6,8 @@ use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Laravolt\Avatar\Facade as Avatar;
+use Illuminate\Support\Str;
 
 class User extends Authenticatable
 {
@@ -54,16 +56,18 @@ class User extends Authenticatable
     // }
 
 
-    public function getAvatarAttribute($value)
+    public function getAvatarAttribute()
     {
         //   return asset('storage/' . $value ?: '/images/default-avatar.png');
-        if (isset($value)) {
+        // if (isset($value)) {
 
-            return asset('storage/' . $value);
-        } else {
+        //     return asset('storage/' . $value);
+        // } else {
 
-            return asset('/images/default-avatar.png');
-        }
+        //     return asset('/images/default-avatar.png');
+        // }
+
+        return Avatar::create(Str::title($this->name))->toBase64();
     }
 
     public function setPasswordAttribute($value)

@@ -26,9 +26,9 @@
                     <p class="font-semibold"> {{ $tweet->user->name }} </p>
                 </a>
 
-                <p class="text-sm text-dark ml-2">
-                    @ {{ $tweet->user->username }}
-                </p>
+                <a href="{{ route('profile', $tweet->user) }}" class="text-sm text-dark ml-2">
+                    {{ '@' . $tweet->user->username }}
+                </a>
                 <p class="text-sm text-dark ml-2"> {{ $tweet->created_at->diffForHumans() }} </p>
                 <i class="fas fa-angle-down text-dark ml-auto"></i>
             </div>
