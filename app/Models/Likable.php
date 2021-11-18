@@ -36,6 +36,8 @@ trait Likable
         // ]);
 
         return $this->like($user,false);
+        // $this->likes()->where('user_id', $user ? $user->id : auth()->id())
+        //              ->delete();
     }
 
 
