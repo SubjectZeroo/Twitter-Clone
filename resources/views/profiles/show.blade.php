@@ -22,11 +22,9 @@
                     </x-follow-button>
                 </div>
             </div>
-            <p class="text-sm px-5 py-3">Lorem ipsum dolor sit amet consectetur adipisicing elit. Harum, possimus! Esse
-                eum
-                consequatur repudiandae eos iste fugiat veritatis provident laudantium nesciunt ratione reiciendis,
-                ullam et
-                harum molestiae sequi, vitae nulla?</p>
+            <p class="text-sm px-5 py-3">
+                {{ $user->description }}
+            </p>
         </header>
         @include('_timeline' , [
         'tweets' => $tweets
