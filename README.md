@@ -1,6 +1,7 @@
+
+[![Banner](banner_readme.jpg)](https://jasor.dev)
 # Twitter Clone
 
-<!-- [Front-End Web Developer Nanodegree Project](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) -->
 
 Este proyecto forma parte de los curso impartidos por Jeffrey Way en Laracast. El objetivo del proyecto era hacer algo parecido a Twitter en Laravel.
 
@@ -31,7 +32,7 @@ npm install
 php artisan migrate
 ```
 
-## Recommended Additions
+## Adiciones recomendadas
 
 <!-- 1. The profile page banner image and description are hard-coded. Make these dynamic for each user. -->
 1. La imagen y la descripción del banner de la página de perfil están codificadas de forma estatica. Haz que estos sean dinámicos para cada usuario.
