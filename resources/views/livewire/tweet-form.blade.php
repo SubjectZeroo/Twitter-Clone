@@ -10,7 +10,7 @@
         <p class="text-red-500 text-sm mt-2">{{ $message }}</p>
     @enderror
     <button type="submit"
-        class="h-10 px-4 text-white font-semibold focus:outline-none rounded-full absolute bottom-0 right-0 inline-flex items-center justify-center py-3 px-6 border border-transparent text-base leading-6 font-medium rounded-md text-white bg-blue hover:bg-darkblue focus:outline-none focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out disabled:opacity-50">
+        class="h-10 font-semibold focus:outline-none rounded-full absolute bottom-0 right-0 inline-flex items-center justify-center py-3 px-6 border border-transparent text-base leading-6  text-white bg-blue hover:bg-darkblue  focus:border-blue-700 focus:shadow-outline-blue active:bg-blue-700 transition duration-150 ease-in-out disabled:opacity-50">
         <svg wire:loading wire:target="submitForm" class="animate-spin -ml-1 mr-3 h-5 w-5 text-white"
             xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
